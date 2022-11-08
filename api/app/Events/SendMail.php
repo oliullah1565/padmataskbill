@@ -4,16 +4,15 @@ namespace App\Events;
 use Event;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
+use Illuminate\Foundation\Events\Dispatchable;
+use App\Models\Bill;
 class SendMail extends Event
 {
-    use SerializesModels;
-    public $userId;
-    public function __construct($userId)
+    use SerializesModels, Dispatchable;
+    public $bill;
+    public function __construct(Bill $bill)
     {
-        $this->userId = $userId;
+        $this->bill = $bill;
     }
-    public function broadcastOn()
-    {
-        return [];
-    }
+ 
 }

@@ -59,8 +59,10 @@ class BillController extends Controller
             $bill->save();
         }
 
-        $data= $bill;
-    
+        $bill= Bill::where('id', $bill->id)->with('customer')->first();
+        SendMail::dispatch($bill);
+        
+        $data= Bill::with('customer')->get();
         return response($data, 201);
     }
 
@@ -72,8 +74,9 @@ class BillController extends Controller
      */
     public function show($id)
     {
-        $data= Bill::with('customer')->get();
-        //Event::fire(new SendMail($data->id));
+        $data= Bill::where('id',$id)->with('customer')->first();
+      
+
         return response($data, 201);
     }
 
