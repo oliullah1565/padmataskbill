@@ -28,6 +28,7 @@ class BillConfirmation extends Mailable
      */
     public function build()
     {
+        //For mail send
         return $this->from('nec@axesgl.com', 'Bill Confirmation')->markdown('mail.billConfirmation');
     }          
 }

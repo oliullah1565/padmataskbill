@@ -8,7 +8,7 @@ use App\Models\Bill;
 use Mail;
 class SendMailFired
 {
-   
+   //For Bill Confirmation
     public function handle($event)
     {
       $bill = $event->bill;

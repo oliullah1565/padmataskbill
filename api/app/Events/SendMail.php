@@ -12,6 +12,8 @@ class SendMail extends Event
     public $bill;
     public function __construct(Bill $bill)
     {
+        //for bill data
+        
         $this->bill = $bill;
     }
  
